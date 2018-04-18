@@ -57,7 +57,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="cNU-7L-81g" id="9lg-T6-Zwc"/>
-                                            <segue destination="QhO-mF-pea" kind="show" id="dEl-ZQ-aqV"/>
+                                            <segue destination="QhO-mF-pea" kind="show" identifier="showCityDetailsSegue" id="dEl-ZQ-aqV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -122,7 +122,7 @@
         <!--City View Controller-->
         <scene sceneID="qX1-Aw-vCW">
             <objects>
-                <viewController id="QhO-mF-pea" customClass="CityViewController" sceneMemberID="viewController">
+                <viewController id="QhO-mF-pea" customClass="CityViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7vA-vS-6k6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,6 +263,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ihm-Vo-lzQ"/>
                     </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="VRK-RX-YVj" id="Isy-c6-8gj"/>
+                        <outlet property="degreeLabel" destination="OlV-tq-wO1" id="rBq-Wy-akQ"/>
+                        <outlet property="humidityLabel" destination="8Nu-fA-Tio" id="DSJ-Rh-QrH"/>
+                        <outlet property="rainLabel" destination="c6r-JK-Nrn" id="aG1-jj-hMa"/>
+                        <outlet property="temperatureLabel" destination="um7-rg-Ybe" id="LsU-AQ-aeF"/>
+                        <outlet property="weatherLabel" destination="sZS-IN-yUK" id="beM-IM-hfc"/>
+                        <outlet property="windDegreeLabel" destination="sMV-xp-jNf" id="ZJy-Dx-5bE"/>
+                        <outlet property="windSpeedLabel" destination="wgh-9H-F5n" id="vZO-jc-VIU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d49-88-kEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

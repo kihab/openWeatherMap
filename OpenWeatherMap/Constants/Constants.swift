@@ -10,5 +10,13 @@ import Foundation
 
 class Constants {
     
-    static let citiesViewCellIdentifier = "CitiesCell"
+    static let CITIES_VIEW_CELL_IDENTIFIER = "CitiesCell"
+    static let CITY_DETAILS_SEGUE = "showCityDetailsSegue"
+    
+    static let API_KEY = "c6e381d8c7ff98f0fee43775817cf6ad"
+    static let BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"    
+    static let DEFAULT_UNIT = "metric"
+    
+    static let NOT_AVAILABLE = "NA"
+
 }
