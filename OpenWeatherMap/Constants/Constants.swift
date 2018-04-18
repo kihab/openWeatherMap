@@ -18,5 +18,10 @@ class Constants {
     static let DEFAULT_UNIT = "metric"
     
     static let NOT_AVAILABLE = "NA"
+    
+    static let SPEED = "Speed"
+    static let Degree = "Degree"
+    static let MINIMUM = "Min"
+    static let MAXIMUM = "Max"
 
 }

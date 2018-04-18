@@ -6,6 +6,8 @@
 //  Copyright © 2018 Karim Ihab. All rights reserved.
 //
 
+import UIKit
+
 protocol CityPresenterProtocol {
     
     func getDetails(forCity city:LocalCityModel?)
@@ -26,7 +28,10 @@ class CityPresenter: CityPresenterProtocol {
         
         openWeatherService.getCityDetails(city: city) { [weak self] (cityDetails) in
             
-            self?.cityViewControler?.populateDetails(forCity: cityDetails)
+            DispatchQueue.main.async {
+                self?.cityViewControler?.populateDetails(forCity: cityDetails)
+            }
+            
         }
     }
 }

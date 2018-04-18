@@ -35,13 +35,14 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
     }
     
     func populateDetails(forCity city: City) {
+        
         cityNameLabel.text = city.name
         weatherLabel.text = city.weather.first?.main
         degreeLabel.text = String(city.main.temp)
         humidityLabel.text = String(city.main.humidity)
-        windSpeedLabel.text = String(city.wind.speed)
-        windDegreeLabel.text = String(city.wind.deg)
-        temperatureLabel.text = String("\(city.main.temp_min) - \(city.main.temp_max)")
+        windSpeedLabel.text = String("\(Constants.SPEED): \(city.wind.speed)")
+        windDegreeLabel.text = String("\(Constants.Degree): \(city.wind.deg)")
+        temperatureLabel.text = String("\(Constants.MAXIMUM): \(city.main.temp_max) - \(Constants.MINIMUM): \(city.main.temp_min)")
         guard let rain = city.rain else {
             rainLabel.text = Constants.NOT_AVAILABLE
             return
