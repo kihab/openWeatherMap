@@ -36,7 +36,7 @@
                                 </connections>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9dS-RQ-qHT">
-                                <rect key="frame" x="0.0" y="289" width="375" height="358"/>
+                                <rect key="frame" x="0.0" y="289" width="355" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="24r-dv-uC3">
                                     <size key="itemSize" width="150" height="50"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="H8C-uo-yIq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4SF-LN-lTt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9dS-RQ-qHT" secondAttribute="bottom" constant="20" id="77I-TB-Fud"/>
                             <constraint firstItem="H8C-uo-yIq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ory-aI-dRx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dS-RQ-qHT" secondAttribute="trailing" id="Sip-vR-hxn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dS-RQ-qHT" secondAttribute="trailing" constant="20" id="Sip-vR-hxn"/>
                             <constraint firstItem="Faq-jW-QY3" firstAttribute="top" secondItem="H8C-uo-yIq" secondAttribute="bottom" constant="10" id="b2c-cs-T9N"/>
                             <constraint firstItem="9dS-RQ-qHT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d8w-BT-Jle"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Faq-jW-QY3" secondAttribute="trailing" id="dCE-1H-qZv"/>
@@ -287,6 +287,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="olH-ut-wyP"/>
+        <segue reference="dEl-ZQ-aqV"/>
     </inferredMetricsTieBreakers>
 </document>
