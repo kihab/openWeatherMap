@@ -35,7 +35,7 @@ class Storage: StorageProtocol {
     
     func remove(localCity city:LocalCityModel) {
         
-        //TODO:: Remove City
+        //TODO:: Implement Remove City
     }
     
     func getStoredCities() -> [LocalCityModel]? {
