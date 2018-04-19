@@ -9,8 +9,11 @@
 // MARK: Used to store city details locally
 
 struct LocalCityModel: Codable {
-    
     let name: String
+    let coordinates: Coordinates
+}
+
+struct Coordinates: Codable {
     let longitude: Double
     let latitude: Double
 }

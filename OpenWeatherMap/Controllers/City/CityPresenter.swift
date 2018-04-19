@@ -10,7 +10,7 @@ import UIKit
 
 protocol CityPresenterProtocol {
     
-    func getDetails(forCity city:LocalCityModel?)
+    func getDetails(forCoordinates coordinates:Coordinates?)
 }
 
 class CityPresenter: CityPresenterProtocol {
@@ -22,11 +22,11 @@ class CityPresenter: CityPresenterProtocol {
         cityViewControler = viewController
     }
     
-    func getDetails(forCity city: LocalCityModel?) {
+    func getDetails(forCoordinates coordinates: Coordinates?) {
     
-        guard let city = city else { return }
+        guard let coord = coordinates else { return }
         
-        openWeatherService.getDetails(forCity: city) { [weak self] (cityDetails) in
+        openWeatherService.getDetails(forCoordinates: coord) { [weak self] (cityDetails) in
             
             DispatchQueue.main.async {
                 self?.cityViewControler?.populateDetails(forCity: cityDetails)

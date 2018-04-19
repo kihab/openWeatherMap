@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+
 
 protocol HomeViewControllerProtocol {
     
@@ -16,6 +18,11 @@ protocol HomeViewControllerProtocol {
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     @IBOutlet weak var citiesCollectionView: UICollectionView!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var selectedLatitude: Double?
+    var selectedLongitude: Double?
+    var pin = MKPointAnnotation()
     
     var citiesList:[LocalCityModel]?
     var presenter: HomePresenterProtocol?
@@ -39,13 +46,35 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        guard let cityViewController = segue.destination as? CityViewController,
-            let selectedCell = sender as? UICollectionViewCell,
-            let selectedRowIndex = citiesCollectionView.indexPath(for: selectedCell)?.row,
-            let cities = citiesList,
-            segue.identifier == Constants.CITY_DETAILS_SEGUE else { return }
+        guard let cityViewController = segue.destination as? CityViewController
+             else { return }
         
-        cityViewController.localCity = cities[selectedRowIndex]        
+        if segue.identifier == Constants.CITY_DETAILS_SEGUE {
+            
+            guard let cities = citiesList,
+            let selectedCell = sender as? UICollectionViewCell,
+            let selectedRowIndex = citiesCollectionView.indexPath(for: selectedCell)?.row else { return }
+            
+            cityViewController.coordinates = cities[selectedRowIndex].coordinates
+            
+        } else if segue.identifier == Constants.NEW_CITY_DETAILS_SEGUE {
+            
+            guard let long = selectedLongitude, let lat = selectedLatitude else { return }
+            
+            mapView.removeAnnotation(pin)
+            cityViewController.coordinates = Coordinates(longitude: long, latitude: lat)
+            selectedLatitude = nil
+            selectedLongitude = nil
+        }
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == Constants.NEW_CITY_DETAILS_SEGUE {
+                guard let _ = selectedLongitude, let _ = selectedLatitude else { return false }
+        }
+        return true
     }
 }
 
@@ -71,5 +100,21 @@ extension HomeViewController: UICollectionViewDataSource {
         
         cell.cityNameLabel.text = cities[indexPath.row].name
         return cell
+    }
+}
+
+extension HomeViewController {
+    
+    @IBAction func userDidLongPress(_ sender: UILongPressGestureRecognizer) {
+        
+        if sender.state != UIGestureRecognizerState.began { return }
+        let touchLocation = sender.location(in: mapView)
+        let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        
+        pin.coordinate = locationCoordinate
+        mapView.addAnnotation(pin)
+        
+        selectedLatitude =  locationCoordinate.latitude
+        selectedLongitude =  locationCoordinate.longitude
     }
 }

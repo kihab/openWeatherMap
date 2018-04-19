@@ -24,9 +24,13 @@ class Storage: StorageProtocol {
             citiesList = cities
         }
         
-        citiesList.append(city)
-        
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(citiesList), forKey: Constants.CITIES_LIST)
+        if citiesList.contains(where: { $0.name == city.name }) {
+            return
+        } else {
+            citiesList.append(city)
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(citiesList), forKey: Constants.CITIES_LIST)
+        }
+
     }
     
     static func remove(localCity city:LocalCityModel) {

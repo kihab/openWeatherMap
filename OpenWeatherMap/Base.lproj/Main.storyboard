@@ -19,31 +19,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8C-uo-yIq">
-                                <rect key="frame" x="134" y="84" width="107" height="30"/>
-                                <state key="normal" title="Add New City +"/>
+                                <rect key="frame" x="74" y="84" width="227" height="30"/>
+                                <state key="normal" title="Show Selected Location Weather"/>
                                 <connections>
-                                    <segue destination="ebH-lt-oHZ" kind="show" id="JYX-k5-zUs"/>
+                                    <segue destination="QhO-mF-pea" kind="show" identifier="showNewLocationDetailsSegue" id="olH-ut-wyP"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Faq-jW-QY3">
+                                <rect key="frame" x="0.0" y="124" width="375" height="155"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="155" id="3of-ve-lZl"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ed5-F7-Df9" appends="YES" id="biV-8b-4Ue"/>
+                                </connections>
+                            </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9dS-RQ-qHT">
-                                <rect key="frame" x="0.0" y="130" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="289" width="375" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="24r-dv-uC3">
-                                    <size key="itemSize" width="300" height="50"/>
+                                    <size key="itemSize" width="150" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CitiesCell" id="7KY-5x-yQC" customClass="CitiesCollectionViewCell" customModule="OpenWeatherMap" customModuleProvider="target">
-                                        <rect key="frame" x="37.5" y="0.0" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNU-7L-81g">
-                                                    <rect key="frame" x="15" y="15" width="285" height="21"/>
+                                                    <rect key="frame" x="15" y="15" width="135" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -69,71 +79,34 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9dS-RQ-qHT" firstAttribute="top" secondItem="Faq-jW-QY3" secondAttribute="bottom" constant="10" id="3aw-xK-HO7"/>
                             <constraint firstItem="H8C-uo-yIq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4SF-LN-lTt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9dS-RQ-qHT" secondAttribute="bottom" constant="20" id="77I-TB-Fud"/>
-                            <constraint firstItem="9dS-RQ-qHT" firstAttribute="top" secondItem="H8C-uo-yIq" secondAttribute="bottom" constant="16" id="C99-zb-QRE"/>
                             <constraint firstItem="H8C-uo-yIq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ory-aI-dRx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dS-RQ-qHT" secondAttribute="trailing" id="Sip-vR-hxn"/>
+                            <constraint firstItem="Faq-jW-QY3" firstAttribute="top" secondItem="H8C-uo-yIq" secondAttribute="bottom" constant="10" id="b2c-cs-T9N"/>
                             <constraint firstItem="9dS-RQ-qHT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d8w-BT-Jle"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Faq-jW-QY3" secondAttribute="trailing" id="dCE-1H-qZv"/>
+                            <constraint firstItem="Faq-jW-QY3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gR8-69-Iog"/>
+                            <constraint firstItem="Faq-jW-QY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kfE-ED-Urr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="rwX-ON-2YX"/>
                     <connections>
                         <outlet property="citiesCollectionView" destination="9dS-RQ-qHT" id="hdh-EE-fLq"/>
+                        <outlet property="mapView" destination="Faq-jW-QY3" id="m5g-TP-04h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="735.20000000000005" y="78.710644677661179"/>
-        </scene>
-        <!--Map View Controller-->
-        <scene sceneID="PEx-JA-BPh">
-            <objects>
-                <viewController id="ebH-lt-oHZ" customClass="MapViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3oa-1I-pmZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIx-jf-wRs">
-                                <rect key="frame" x="151.5" y="617" width="72" height="30"/>
-                                <state key="normal" title="+ Add City"/>
-                                <connections>
-                                    <action selector="AddCityButtonPressed" destination="ebH-lt-oHZ" eventType="touchUpInside" id="wXS-dN-kPT"/>
-                                </connections>
-                            </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JMt-DN-Lan">
-                                <rect key="frame" x="0.0" y="64" width="375" height="528"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="pCa-6J-zZp" appends="YES" id="SGq-18-ioY"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="JMt-DN-Lan" firstAttribute="top" secondItem="mgG-gL-QxD" secondAttribute="top" id="6s3-3h-fVk"/>
-                            <constraint firstItem="mgG-gL-QxD" firstAttribute="bottom" secondItem="iIx-jf-wRs" secondAttribute="bottom" constant="20" id="Pm6-uH-rDn"/>
-                            <constraint firstItem="JMt-DN-Lan" firstAttribute="leading" secondItem="mgG-gL-QxD" secondAttribute="leading" id="hqp-R3-3NZ"/>
-                            <constraint firstItem="iIx-jf-wRs" firstAttribute="top" secondItem="JMt-DN-Lan" secondAttribute="bottom" constant="25" id="nf1-LP-b0e"/>
-                            <constraint firstItem="mgG-gL-QxD" firstAttribute="trailing" secondItem="JMt-DN-Lan" secondAttribute="trailing" id="qJZ-8M-hu0"/>
-                            <constraint firstItem="iIx-jf-wRs" firstAttribute="centerX" secondItem="mgG-gL-QxD" secondAttribute="centerX" id="tZr-TC-yXq"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="mgG-gL-QxD"/>
-                    </view>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ed5-F7-Df9">
                     <connections>
-                        <outlet property="mapView" destination="JMt-DN-Lan" id="Zn1-5U-2Q7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eKs-iJ-eEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="pCa-6J-zZp">
-                    <connections>
-                        <action selector="userDidLongPress:" destination="ebH-lt-oHZ" id="nHi-xK-IAc"/>
-                        <outlet property="delegate" destination="ebH-lt-oHZ" id="8j3-fI-6Wl"/>
+                        <action selector="userDidLongPress:" destination="BYZ-38-t0r" id="wiH-Wp-tkY"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="BZd-dM-hoe"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1620" y="-262"/>
+            <point key="canvasLocation" x="735.20000000000005" y="78.710644677661179"/>
         </scene>
         <!--City View Controller-->
         <scene sceneID="qX1-Aw-vCW">
@@ -292,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d49-88-kEZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293.5999999999999" y="559.97001499250382"/>
+            <point key="canvasLocation" x="1662" y="79"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tpr-pz-sZg">
@@ -313,4 +286,7 @@
             <point key="canvasLocation" x="-204" y="78.710644677661179"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="olH-ut-wyP"/>
+    </inferredMetricsTieBreakers>
 </document>

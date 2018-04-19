@@ -12,6 +12,7 @@ class Constants {
     
     static let CITIES_VIEW_CELL_IDENTIFIER = "CitiesCell"
     static let CITY_DETAILS_SEGUE = "showCityDetailsSegue"
+    static let NEW_CITY_DETAILS_SEGUE = "showNewLocationDetailsSegue"
     
     static let API_KEY = "c6e381d8c7ff98f0fee43775817cf6ad"
     static let BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"    

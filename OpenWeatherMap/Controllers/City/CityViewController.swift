@@ -25,13 +25,13 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
     @IBOutlet weak var temperatureLabel:UILabel!
     
     var presenter: CityPresenterProtocol?
-    var localCity:LocalCityModel?
+    var coordinates:Coordinates?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter = CityPresenter(viewController: self)        
-        presenter?.getDetails(forCity: localCity)
+        presenter?.getDetails(forCoordinates: coordinates)
     }
     
     func populateDetails(forCity city: City) {
@@ -43,10 +43,16 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
         windSpeedLabel.text = String("\(Constants.SPEED): \(city.wind.speed)")
         windDegreeLabel.text = String("\(Constants.Degree): \(city.wind.deg)")
         temperatureLabel.text = String("\(Constants.MAXIMUM): \(city.main.temp_max) - \(Constants.MINIMUM): \(city.main.temp_min)")
-        guard let rain = city.rain else {
+        if let rain = city.rain {
+            rainLabel.text = String(rain.volume)
+        } else {
             rainLabel.text = Constants.NOT_AVAILABLE
-            return
         }
-        rainLabel.text = String(rain.volume)
+        
+        
+        guard let coord = coordinates else { return }
+        Storage.store(localCity: LocalCityModel(name: city.name, coordinates: coord))
+
+
     }
 }

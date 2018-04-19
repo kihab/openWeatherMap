@@ -12,14 +12,14 @@ typealias CityDetailsCompletionBlock = (_ city:City) -> Void
 
 protocol OpenWeatherServiceProtocol {
     
-    static func getDetails(forCity city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock)
+    static func getDetails(forCoordinates coordinates:Coordinates, completionBlock: @escaping CityDetailsCompletionBlock)
 }
 
 class openWeatherService:  OpenWeatherServiceProtocol {
     
-    class func getDetails(forCity city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock) {
+    class func getDetails(forCoordinates coordinates:Coordinates, completionBlock: @escaping CityDetailsCompletionBlock) {
         
-        let urlString = URLFormatter.getCityDetailsURL(longitude: city.longitude, latitude: city.latitude)
+        let urlString = URLFormatter.getCityDetailsURL(longitude: coordinates.longitude, latitude: coordinates.latitude)
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
