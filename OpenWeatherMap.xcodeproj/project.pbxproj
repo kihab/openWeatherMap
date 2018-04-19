@@ -24,6 +24,8 @@
 		8A8D34992087FE29004DFC17 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8D34982087FE29004DFC17 /* HomePresenter.swift */; };
 		8A8D349B208812EF004DFC17 /* StorageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8D349A208812EF004DFC17 /* StorageModels.swift */; };
 		8AB9F7772088B3B600BA3575 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9F7762088B3B600BA3575 /* HomePresenterTests.swift */; };
+		8AB9F77A2088D8DE00BA3575 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9F7792088D8DE00BA3575 /* HelpViewController.swift */; };
+		8AB9F77C2088DC5E00BA3575 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 8AB9F77B2088DC5E00BA3575 /* help.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		8A8D34982087FE29004DFC17 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		8A8D349A208812EF004DFC17 /* StorageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModels.swift; sourceTree = "<group>"; };
 		8AB9F7762088B3B600BA3575 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		8AB9F7792088D8DE00BA3575 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		8AB9F77B2088DC5E00BA3575 /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		8A8D347A20879AEF004DFC17 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8AB9F7782088D8C800BA3575 /* Help */,
 				8A8D34932087F26A004DFC17 /* Home */,
 				8A8D34952087F283004DFC17 /* City */,
 			);
@@ -171,6 +176,7 @@
 			children = (
 				8A8D346320879A93004DFC17 /* LaunchScreen.storyboard */,
 				8A8D346120879A93004DFC17 /* Assets.xcassets */,
+				8AB9F77B2088DC5E00BA3575 /* help.html */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -207,6 +213,14 @@
 				8A8D34962087F8A2004DFC17 /* CityPresenter.swift */,
 			);
 			path = City;
+			sourceTree = "<group>";
+		};
+		8AB9F7782088D8C800BA3575 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				8AB9F7792088D8DE00BA3575 /* HelpViewController.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A8D346520879A93004DFC17 /* LaunchScreen.storyboard in Resources */,
+				8AB9F77C2088DC5E00BA3575 /* help.html in Resources */,
 				8A8D346220879A93004DFC17 /* Assets.xcassets in Resources */,
 				8A8D346020879A92004DFC17 /* Main.storyboard in Resources */,
 			);
@@ -313,6 +328,7 @@
 				8A8D348F20879D9E004DFC17 /* CitiesCollectionViewCell.swift in Sources */,
 				8A8D345D20879A92004DFC17 /* HomeViewController.swift in Sources */,
 				8A8D348820879B98004DFC17 /* Storage.swift in Sources */,
+				8AB9F77A2088D8DE00BA3575 /* HelpViewController.swift in Sources */,
 				8A8D34992087FE29004DFC17 /* HomePresenter.swift in Sources */,
 				8A8D348420879B6E004DFC17 /* OpenWeatherModels.swift in Sources */,
 				8A8D348120879B5B004DFC17 /* OpenWeatherService.swift in Sources */,
