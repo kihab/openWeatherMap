@@ -12,8 +12,8 @@ import MapKit
 
 protocol HomeViewControllerProtocol {
     
-    func populateCollectionView(withCitiesList cities:[LocalCityModel])
-    
+    func populateCollectionView()
+    var citiesList:[LocalCityModel]? {set get}
 }
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
@@ -40,8 +40,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
         presenter?.getCitiesList()
     }
     
-    func populateCollectionView(withCitiesList cities: [LocalCityModel]) {
-        citiesList = cities
+    func populateCollectionView() {
         citiesCollectionView.reloadData()
     }
     

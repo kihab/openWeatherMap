@@ -10,8 +10,10 @@ import UIKit
 
 protocol CityViewControllerProtocol {
     
-    func populateDetails(forCity city:City)
+    func populateDetails()
     func showErrorAlert()
+    
+    var currentCity:City? {set get}
 }
 
 class CityViewController: UIViewController, CityViewControllerProtocol {
@@ -29,6 +31,8 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
     var coordinates:Coordinates?
     var storage = Storage()
     
+    var currentCity:City?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +42,8 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
         presenter?.getDetails(forCoordinates: coordinates)
     }
     
-    func populateDetails(forCity city: City) {
+    func populateDetails() {
+        guard let city = currentCity else {return}
         
         cityNameLabel.text = city.name
         weatherLabel.text = city.weather.first?.main

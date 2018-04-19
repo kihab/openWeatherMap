@@ -14,9 +14,9 @@ protocol HomePresenterProtocol {
 class HomePresenter: HomePresenterProtocol {
 
     var homeViewController: HomeViewControllerProtocol?
-    var storage: Storage?
+    var storage: StorageProtocol?
     
-    init(viewController: HomeViewControllerProtocol, storageHelper: Storage) {
+    init(viewController: HomeViewControllerProtocol, storageHelper: StorageProtocol) {
         homeViewController = viewController
         storage = storageHelper
     }
@@ -26,8 +26,9 @@ class HomePresenter: HomePresenterProtocol {
         guard let storageHelper = storage, let cities =  storageHelper.getStoredCities() else {
             return
         }
-
-        homeViewController?.populateCollectionView(withCitiesList: cities)
+        
+        homeViewController?.citiesList = cities
+        homeViewController?.populateCollectionView()
     }
     
     

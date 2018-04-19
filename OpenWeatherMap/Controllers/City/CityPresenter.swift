@@ -16,9 +16,9 @@ protocol CityPresenterProtocol {
 class CityPresenter: CityPresenterProtocol {
     
     var cityViewControler:CityViewControllerProtocol?
-    var weatherService:OpenWeatherService?
+    var weatherService:OpenWeatherServiceProtocol?
     
-    init(viewController: CityViewControllerProtocol, openWeatherService: OpenWeatherService) {
+    init(viewController: CityViewControllerProtocol, openWeatherService: OpenWeatherServiceProtocol) {
         
         cityViewControler = viewController
         weatherService = openWeatherService
@@ -29,14 +29,16 @@ class CityPresenter: CityPresenterProtocol {
         guard let coord = coordinates, let service = weatherService else { return }
         
         service.getDetails(forCoordinates: coord) { [weak self] (cityDetails, error) in
-            
-            guard let city = cityDetails, error == nil else {                
+                        
+            guard let strongSelf = self, let city = cityDetails, error == nil else {
                 self?.cityViewControler?.showErrorAlert()
                 return
             }
             
+            strongSelf.cityViewControler?.currentCity = city
+            
             DispatchQueue.main.async { [weak self] in
-                self?.cityViewControler?.populateDetails(forCity: city)
+                self?.cityViewControler?.populateDetails()
             }
             
         }
