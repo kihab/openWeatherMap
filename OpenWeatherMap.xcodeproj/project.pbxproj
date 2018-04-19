@@ -24,6 +24,7 @@
 		8A8D34972087F8A2004DFC17 /* CityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8D34962087F8A2004DFC17 /* CityPresenter.swift */; };
 		8A8D34992087FE29004DFC17 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8D34982087FE29004DFC17 /* HomePresenter.swift */; };
 		8A8D349B208812EF004DFC17 /* StorageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8D349A208812EF004DFC17 /* StorageModels.swift */; };
+		8AB9F7752088232B00BA3575 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB9F7742088232B00BA3575 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		8A8D34962087F8A2004DFC17 /* CityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityPresenter.swift; sourceTree = "<group>"; };
 		8A8D34982087FE29004DFC17 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		8A8D349A208812EF004DFC17 /* StorageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModels.swift; sourceTree = "<group>"; };
+		8AB9F7742088232B00BA3575 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				8A8D34912087EBCD004DFC17 /* URLFormatter.swift */,
+				8AB9F7742088232B00BA3575 /* LocationService.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB9F7752088232B00BA3575 /* LocationService.swift in Sources */,
 				8A8D348F20879D9E004DFC17 /* CitiesCollectionViewCell.swift in Sources */,
 				8A8D345D20879A92004DFC17 /* HomeViewController.swift in Sources */,
 				8A8D348820879B98004DFC17 /* Storage.swift in Sources */,

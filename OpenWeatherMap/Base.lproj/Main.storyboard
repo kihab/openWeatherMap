@@ -104,6 +104,10 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JMt-DN-Lan">
                                 <rect key="frame" x="0.0" y="64" width="375" height="528"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pCa-6J-zZp" appends="YES" id="SGq-18-ioY"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,8 +121,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mgG-gL-QxD"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="JMt-DN-Lan" id="Zn1-5U-2Q7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKs-iJ-eEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="pCa-6J-zZp">
+                    <connections>
+                        <action selector="userDidLongPress:" destination="ebH-lt-oHZ" id="nHi-xK-IAc"/>
+                        <outlet property="delegate" destination="ebH-lt-oHZ" id="8j3-fI-6Wl"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1620" y="-262"/>
         </scene>

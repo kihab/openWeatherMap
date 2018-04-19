@@ -26,7 +26,7 @@ class CityPresenter: CityPresenterProtocol {
     
         guard let city = city else { return }
         
-        openWeatherService.getCityDetails(city: city) { [weak self] (cityDetails) in
+        openWeatherService.getDetails(forCity: city) { [weak self] (cityDetails) in
             
             DispatchQueue.main.async {
                 self?.cityViewControler?.populateDetails(forCity: cityDetails)

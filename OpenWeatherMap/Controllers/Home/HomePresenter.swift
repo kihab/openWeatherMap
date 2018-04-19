@@ -24,7 +24,7 @@ class HomePresenter: HomePresenterProtocol {
         guard let cities =  Storage.getStoredCities() else {
             return
         }
-        
+
         homeViewController?.populateCollectionView(withCitiesList: cities)
     }
     

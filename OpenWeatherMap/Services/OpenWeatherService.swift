@@ -10,9 +10,14 @@ import UIKit
 
 typealias CityDetailsCompletionBlock = (_ city:City) -> Void
 
-class openWeatherService {
+protocol OpenWeatherServiceProtocol {
     
-    class func getCityDetails(city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock) {
+    static func getDetails(forCity city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock)
+}
+
+class openWeatherService:  OpenWeatherServiceProtocol {
+    
+    class func getDetails(forCity city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock) {
         
         let urlString = URLFormatter.getCityDetailsURL(longitude: city.longitude, latitude: city.latitude)
         guard let url = URL(string: urlString) else { return }
