@@ -6,23 +6,8 @@
 //  Copyright © 2018 Karim Ihab. All rights reserved.
 //
 
-
-//TODO::Either Rename the two cities object or make it prettier.
-//I think it shouldn't be named city, not even an object - see after soting locally NSUserDefaults.
-
-// MARK: Models used to store city details locally
-struct LocalCityModel {
-    let name: String
-    let coordinates: Coordinates
-}
-
-struct Coordinates {
-    let longitude: Double
-    let latitude: Double
-    
-}
-
 // MARK: Models used to parse city details from the server
+
 struct City: Decodable {
     let name: String
     let id: Int
@@ -49,7 +34,7 @@ struct Wind: Decodable {
     let deg: Int
 }
 
-struct Rain: Decodable {
+struct Rain: Decodable {    
     let volume: Int
     
     private enum CodingKeys : String, CodingKey {

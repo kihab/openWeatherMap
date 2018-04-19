@@ -23,5 +23,7 @@ class Constants {
     static let Degree = "Degree"
     static let MINIMUM = "Min"
     static let MAXIMUM = "Max"
+    
+    static let CITIES_LIST = "locallyStoredCitiesList"
 
 }

@@ -90,7 +90,7 @@
         <!--Map View Controller-->
         <scene sceneID="PEx-JA-BPh">
             <objects>
-                <viewController id="ebH-lt-oHZ" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="ebH-lt-oHZ" customClass="MapViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3oa-1I-pmZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,6 +98,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIx-jf-wRs">
                                 <rect key="frame" x="151.5" y="617" width="72" height="30"/>
                                 <state key="normal" title="+ Add City"/>
+                                <connections>
+                                    <action selector="AddCityButtonPressed" destination="ebH-lt-oHZ" eventType="touchUpInside" id="wXS-dN-kPT"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JMt-DN-Lan">
                                 <rect key="frame" x="0.0" y="64" width="375" height="528"/>

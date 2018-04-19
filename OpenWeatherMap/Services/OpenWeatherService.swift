@@ -14,7 +14,7 @@ class openWeatherService {
     
     class func getCityDetails(city:LocalCityModel, completionBlock: @escaping CityDetailsCompletionBlock) {
         
-        let urlString = URLFormatter.getCityDetailsURL(longitude: city.coordinates.longitude, latitude: city.coordinates.latitude)
+        let urlString = URLFormatter.getCityDetailsURL(longitude: city.longitude, latitude: city.latitude)
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in

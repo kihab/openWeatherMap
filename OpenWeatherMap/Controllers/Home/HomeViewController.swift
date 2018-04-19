@@ -24,6 +24,11 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
         super.viewDidLoad()
         
         presenter = HomePresenter(viewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         presenter?.getCitiesList()
     }
     
