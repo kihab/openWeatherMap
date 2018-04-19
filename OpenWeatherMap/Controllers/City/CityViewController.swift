@@ -36,6 +36,8 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "City"
+        
         let service = OpenWeatherService(urlFormatter: URLFormatter())
         
         presenter = CityPresenter(viewController: self, openWeatherService: service)

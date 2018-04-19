@@ -22,6 +22,8 @@ class HelpViewContoller: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Help"
 
         let htmlPath = Bundle.main.path(forResource: "help", ofType: "html")
         guard let path = htmlPath else { return }

@@ -34,6 +34,8 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Home"
+        
         let storage = Storage()
         presenter = HomePresenter(viewController: self, storageHelper: storage)
     }
