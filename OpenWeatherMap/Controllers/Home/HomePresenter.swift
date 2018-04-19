@@ -14,14 +14,16 @@ protocol HomePresenterProtocol {
 class HomePresenter: HomePresenterProtocol {
 
     var homeViewController: HomeViewControllerProtocol?
+    var storage: Storage?
     
-    init(viewController: HomeViewControllerProtocol) {
+    init(viewController: HomeViewControllerProtocol, storageHelper: Storage) {
         homeViewController = viewController
+        storage = storageHelper
     }
     
     func getCitiesList() {
         
-        guard let cities =  Storage.getStoredCities() else {
+        guard let storageHelper = storage, let cities =  storageHelper.getStoredCities() else {
             return
         }
 

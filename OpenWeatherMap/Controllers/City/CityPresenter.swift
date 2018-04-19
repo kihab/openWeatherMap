@@ -16,20 +16,27 @@ protocol CityPresenterProtocol {
 class CityPresenter: CityPresenterProtocol {
     
     var cityViewControler:CityViewControllerProtocol?
+    var weatherService:OpenWeatherService?
     
-    init(viewController: CityViewControllerProtocol) {
+    init(viewController: CityViewControllerProtocol, openWeatherService: OpenWeatherService) {
         
         cityViewControler = viewController
+        weatherService = openWeatherService
     }
     
     func getDetails(forCoordinates coordinates: Coordinates?) {
     
-        guard let coord = coordinates else { return }
+        guard let coord = coordinates, let service = weatherService else { return }
         
-        openWeatherService.getDetails(forCoordinates: coord) { [weak self] (cityDetails) in
+        service.getDetails(forCoordinates: coord) { [weak self] (cityDetails, error) in
             
-            DispatchQueue.main.async {
-                self?.cityViewControler?.populateDetails(forCity: cityDetails)
+            guard let city = cityDetails, error == nil else {                
+                self?.cityViewControler?.showErrorAlert()
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.cityViewControler?.populateDetails(forCity: city)
             }
             
         }

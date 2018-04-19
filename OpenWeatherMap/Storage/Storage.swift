@@ -9,15 +9,15 @@ import UIKit
 
 protocol StorageProtocol {
     
-    static func store(localCity city:LocalCityModel)
-    static func remove(localCity city:LocalCityModel)
-    static func getStoredCities() -> [LocalCityModel]?
+    func store(localCity city:LocalCityModel)
+    func remove(localCity city:LocalCityModel)
+    func getStoredCities() -> [LocalCityModel]?
 }
 class Storage: StorageProtocol {
     
-    static let defaults = UserDefaults.standard
+    let defaults = UserDefaults.standard
     
-    static func store(localCity city: LocalCityModel) {
+    func store(localCity city: LocalCityModel) {
         
         var citiesList = [LocalCityModel]()
         if let cities = getStoredCities() {
@@ -33,12 +33,12 @@ class Storage: StorageProtocol {
 
     }
     
-    static func remove(localCity city:LocalCityModel) {
+    func remove(localCity city:LocalCityModel) {
         
         //TODO:: Remove City
     }
     
-    static func getStoredCities() -> [LocalCityModel]? {
+    func getStoredCities() -> [LocalCityModel]? {
         
         if let citiesData = defaults.value(forKey: Constants.CITIES_LIST) as? Data {
             let cities = try? PropertyListDecoder().decode(Array<LocalCityModel>.self, from: citiesData)

@@ -11,6 +11,7 @@ import UIKit
 protocol CityViewControllerProtocol {
     
     func populateDetails(forCity city:City)
+    func showErrorAlert()
 }
 
 class CityViewController: UIViewController, CityViewControllerProtocol {
@@ -26,11 +27,14 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
     
     var presenter: CityPresenterProtocol?
     var coordinates:Coordinates?
+    var storage = Storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = CityPresenter(viewController: self)        
+        let service = OpenWeatherService(urlFormatter: URLFormatter())
+        
+        presenter = CityPresenter(viewController: self, openWeatherService: service)
         presenter?.getDetails(forCoordinates: coordinates)
     }
     
@@ -38,21 +42,25 @@ class CityViewController: UIViewController, CityViewControllerProtocol {
         
         cityNameLabel.text = city.name
         weatherLabel.text = city.weather.first?.main
-        degreeLabel.text = String(city.main.temp)
+        degreeLabel.text = String("\(Int(round(city.main.temp)))\u{00B0}")
         humidityLabel.text = String(city.main.humidity)
         windSpeedLabel.text = String("\(Constants.SPEED): \(city.wind.speed)")
-        windDegreeLabel.text = String("\(Constants.Degree): \(city.wind.deg)")
-        temperatureLabel.text = String("\(Constants.MAXIMUM): \(city.main.temp_max) - \(Constants.MINIMUM): \(city.main.temp_min)")
+        temperatureLabel.text = String("\(Constants.MAXIMUM): \(Int(city.main.temp_max))  -  \(Constants.MINIMUM): \(Int(city.main.temp_min))")
+        
+        if let windDegree = city.wind.deg {
+            windDegreeLabel.text = String("\(Constants.Degree): \(windDegree)")
+        }
         if let rain = city.rain {
             rainLabel.text = String(rain.volume)
-        } else {
-            rainLabel.text = Constants.NOT_AVAILABLE
         }
         
-        
         guard let coord = coordinates else { return }
-        Storage.store(localCity: LocalCityModel(name: city.name, coordinates: coord))
-
-
+        storage.store(localCity: LocalCityModel(name: city.name, coordinates: coord))
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: Constants.EROR_ALERT_TITLE, message: Constants.CITY_ERROR_ALERT_MESSAGE, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.ERROR_ALERT_BUTTON, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

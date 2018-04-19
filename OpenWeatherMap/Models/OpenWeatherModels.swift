@@ -31,7 +31,7 @@ struct Main: Decodable {
 
 struct Wind: Decodable {
     let speed: Float
-    let deg: Int
+    let deg: Int?
 }
 
 struct Rain: Decodable {    

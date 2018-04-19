@@ -30,7 +30,8 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = HomePresenter(viewController: self)
+        let storage = Storage()
+        presenter = HomePresenter(viewController: self, storageHelper: storage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,9 +73,19 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == Constants.NEW_CITY_DETAILS_SEGUE {
-                guard let _ = selectedLongitude, let _ = selectedLatitude else { return false }
+                guard let _ = selectedLongitude, let _ = selectedLatitude else {
+                    showErrorAlert()
+                    return false
+            }
         }
+        
         return true
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: Constants.EROR_ALERT_TITLE, message: Constants.HOME_ERROR_ALERT_MESSAGE, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.ERROR_ALERT_BUTTON, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

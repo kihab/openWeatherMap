@@ -26,5 +26,10 @@ class Constants {
     static let MAXIMUM = "Max"
     
     static let CITIES_LIST = "locallyStoredCitiesList"
+    
+    static let EROR_ALERT_TITLE = "Ooops"
+    static let ERROR_ALERT_BUTTON = "OK"
+    static let HOME_ERROR_ALERT_MESSAGE = "Please pin a location on the map to show its weather details"
+    static let CITY_ERROR_ALERT_MESSAGE = "Sorry, can't get city weather details"
 
 }
