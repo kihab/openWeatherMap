@@ -11,4 +11,12 @@ import UIKit
 class CitiesCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var cityNameLabel:UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    weak var delegate:CityCollectionViewDeletionDelegate?
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        delegate?.deleteCity(cell: self)
+    }
+    
 }

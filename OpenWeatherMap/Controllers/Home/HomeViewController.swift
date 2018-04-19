@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol CityCollectionViewDeletionDelegate: class {
+    
+    func deleteCity(cell: CitiesCollectionViewCell)
+}
 
 protocol HomeViewControllerProtocol {
     
@@ -88,7 +92,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -109,10 +113,20 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         
         cell.cityNameLabel.text = cities[indexPath.row].name
+        cell.delegate = self
         return cell
     }
+    
 }
 
+extension HomeViewController: CityCollectionViewDeletionDelegate {
+    
+    func deleteCity(cell: CitiesCollectionViewCell) {
+        
+        guard let indexPath = citiesCollectionView.indexPath(for: cell), let cities = citiesList else { return }
+        presenter?.removeCity(city: cities[indexPath.row])
+    }
+}
 extension HomeViewController {
     
     @IBAction func userDidLongPress(_ sender: UILongPressGestureRecognizer) {

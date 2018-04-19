@@ -12,6 +12,7 @@ protocol StorageProtocol {
     func store(localCity city:LocalCityModel)
     func remove(localCity city:LocalCityModel)
     func getStoredCities() -> [LocalCityModel]?
+    func storeCityList(citiesList:[LocalCityModel])
 }
 class Storage: StorageProtocol {
     
@@ -28,14 +29,23 @@ class Storage: StorageProtocol {
             return
         } else {
             citiesList.append(city)
-            UserDefaults.standard.set(try? PropertyListEncoder().encode(citiesList), forKey: Constants.CITIES_LIST)
+            storeCityList(citiesList: citiesList)
         }
 
     }
     
+    func storeCityList(citiesList:[LocalCityModel]) {
+        
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(citiesList), forKey: Constants.CITIES_LIST)
+    }
+    
     func remove(localCity city:LocalCityModel) {
         
-        //TODO:: Implement Remove City
+        guard let cities = getStoredCities() else { return }
+        
+        let updatedCites = cities.filter { $0.name != city.name }
+        storeCityList(citiesList: updatedCites)        
+        
     }
     
     func getStoredCities() -> [LocalCityModel]? {

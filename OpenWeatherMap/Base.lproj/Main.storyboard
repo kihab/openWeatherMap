@@ -52,8 +52,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CG-4L-vVe">
+                                                    <rect key="frame" x="5" y="10" width="30" height="30"/>
+                                                    <state key="normal" title="x"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonPressed:" destination="7KY-5x-yQC" eventType="touchUpInside" id="i6b-uN-g6H"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNU-7L-81g">
-                                                    <rect key="frame" x="15" y="15" width="135" height="21"/>
+                                                    <rect key="frame" x="40" y="15" width="80" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,12 +68,14 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="cNU-7L-81g" secondAttribute="trailing" id="8fM-os-SHG"/>
-                                            <constraint firstItem="cNU-7L-81g" firstAttribute="leading" secondItem="7KY-5x-yQC" secondAttribute="leading" constant="15" id="F3b-Gu-vlb"/>
-                                            <constraint firstItem="cNU-7L-81g" firstAttribute="centerY" secondItem="7KY-5x-yQC" secondAttribute="centerY" id="jiG-JX-ZCw"/>
+                                            <constraint firstItem="4CG-4L-vVe" firstAttribute="leading" secondItem="7KY-5x-yQC" secondAttribute="leading" constant="5" id="2r2-Ah-faW"/>
+                                            <constraint firstItem="cNU-7L-81g" firstAttribute="centerY" secondItem="4CG-4L-vVe" secondAttribute="centerY" id="7QV-XA-Nz7"/>
+                                            <constraint firstItem="cNU-7L-81g" firstAttribute="leading" secondItem="4CG-4L-vVe" secondAttribute="trailing" constant="5" id="VGJ-pO-1VU"/>
+                                            <constraint firstItem="4CG-4L-vVe" firstAttribute="centerY" secondItem="7KY-5x-yQC" secondAttribute="centerY" id="zWF-fr-bBS"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cityNameLabel" destination="cNU-7L-81g" id="9lg-T6-Zwc"/>
+                                            <outlet property="deleteButton" destination="4CG-4L-vVe" id="5HO-J6-qSJ"/>
                                             <segue destination="QhO-mF-pea" kind="show" identifier="showCityDetailsSegue" id="dEl-ZQ-aqV"/>
                                         </connections>
                                     </collectionViewCell>

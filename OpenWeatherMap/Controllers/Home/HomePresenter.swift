@@ -9,6 +9,7 @@
 protocol HomePresenterProtocol {
     
     func getCitiesList()
+    func removeCity(city:LocalCityModel)
 }
 
 class HomePresenter: HomePresenterProtocol {
@@ -31,5 +32,14 @@ class HomePresenter: HomePresenterProtocol {
         homeViewController?.populateCollectionView()
     }
     
+    
+    func removeCity(city:LocalCityModel) {
+        
+        guard let storageHelper = storage else { return }
+        
+        storageHelper.remove(localCity: city)
+        getCitiesList()
+        
+    }
     
 }
