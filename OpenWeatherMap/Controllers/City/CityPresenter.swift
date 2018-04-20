@@ -15,7 +15,7 @@ protocol CityPresenterProtocol {
 
 class CityPresenter: CityPresenterProtocol {
     
-    var cityViewControler:CityViewControllerProtocol?
+    weak var cityViewControler:CityViewControllerProtocol?
     var weatherService:OpenWeatherServiceProtocol?
     
     init(viewController: CityViewControllerProtocol, openWeatherService: OpenWeatherServiceProtocol) {

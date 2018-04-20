@@ -14,7 +14,7 @@ protocol CityCollectionViewDeletionDelegate: class {
     func deleteCity(cell: CitiesCollectionViewCell)
 }
 
-protocol HomeViewControllerProtocol {
+protocol HomeViewControllerProtocol: class {
     
     func populateCollectionView()
     var citiesList:[LocalCityModel]? {set get}

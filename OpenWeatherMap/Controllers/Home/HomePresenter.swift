@@ -14,7 +14,7 @@ protocol HomePresenterProtocol {
 
 class HomePresenter: HomePresenterProtocol {
 
-    var homeViewController: HomeViewControllerProtocol?
+    weak var homeViewController: HomeViewControllerProtocol?
     var storage: StorageProtocol?
     
     init(viewController: HomeViewControllerProtocol, storageHelper: StorageProtocol) {

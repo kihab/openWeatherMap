@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CityViewControllerProtocol {
+protocol CityViewControllerProtocol: class {
     
     func populateDetails()
     func showErrorAlert()
