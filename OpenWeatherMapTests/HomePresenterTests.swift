@@ -17,6 +17,8 @@ class HomeViewControllerMock: HomeViewControllerProtocol {
 }
 
 class StorageMock: StorageProtocol {
+
+    func storeCityList(citiesList: [LocalCityModel]) {}
     
     func store(localCity city: LocalCityModel) {}
     
